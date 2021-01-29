@@ -13,8 +13,10 @@ jobs:
       uses: actions/checkout@v2
 
     - name: docker build
+      env:
+        SECRET: {{ secrets.SUPERSECRET }}
       run: |
-           docker build --build-arg SECRET={{ secrets.SUPERSECRET }} --file Dockerfile --tag test:v.0.1 .
+           docker build --tag test:v.0.1 .
 
     - name: docker run
       run: docker run test:v.0.1
