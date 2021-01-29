@@ -1,0 +1,19 @@
+name: build dockerfile and run
+
+on:
+  push:
+    branches: main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps
+    -
+      name: Checkout
+      uses: actions/checkout@v2
+
+    - name: docker build
+      run: docker build --build-arg SECRET={{ secrets.verysecret }} . --file Dockerfile --tag test:v.0.1
+
+    - name: docker run
+      run: docker run test:v.0.1
