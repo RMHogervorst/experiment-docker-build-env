@@ -1,4 +1,4 @@
 FROM ubuntu:20.04
-COPY script.sh
+COPY script.sh script.sh
 ENV secret=${SECRET}
-RUN script.sh
+RUN bash script.sh
